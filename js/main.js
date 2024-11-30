@@ -27,3 +27,21 @@ window.addEventListener('load', function() {
     fetchLogs();
     fetchTables();  // Fetch tables when the page loads
 });
+
+// Функция для обработки изменения выбора сервера
+document.getElementById('server-select').addEventListener('change', function() {
+    const selectedOption = this.value;
+    const customServerInput = document.getElementById('custom-server-input');
+    
+    // Если выбран "Custom Server", показываем поле для ввода домена
+    if (selectedOption === 'custom') {
+        customServerInput.style.display = 'block';
+    } else {
+        customServerInput.style.display = 'none';
+    }
+});
+
+function echoMessage(tableName) {
+    console.log(`Button clicked for table: ${tableName}`);
+}
+ 
