@@ -20,26 +20,19 @@ export async function executeSQL() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ query: sqlCommand })  // Insert the value from textarea into query
+            body: JSON.stringify({ query: sqlCommand })
         });
 
-        console.log('Response Status:', response.status);  // Debugging log to check response status
         const data = await response.json();
-
-        console.log('Response Data:', data);  // Debugging log to check the response data
-
-        if (data.success) {
-            // Use 'data.data' instead of 'data.result'
-            if (data.data && data.data.length > 0) {
-                document.getElementById('output-area').textContent = JSON.stringify(data.data);
-            } else {
-                document.getElementById('output-area').textContent = 'No result returned from the query.';
-            }
-        } else {
-            document.getElementById('output-area').textContent = `Error: ${data.message}`;
-        }
+        
+        // Выводим весь JSON-ответ с красивым форматированием
+        document.getElementById('output-area').textContent = JSON.stringify(data, null, 2);
+        
     } catch (error) {
         console.error('Error executing SQL:', error);
         document.getElementById('output-area').textContent = 'Error executing SQL.';
     }
 }
+
+// Слушаем кнопку для выполнения SQL
+document.getElementById('execute-button').addEventListener('click', executeSQL);
