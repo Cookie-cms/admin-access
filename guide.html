@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        code {
+            background-color: #f9f9f9;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SQL Guide</h1>
+    <p>Этот гайд поможет вам понять основы работы с SQL — языком запросов для работы с реляционными базами данных.</p>
+
+    <div class="section">
+        <h2>1. SELECT — Выборка данных</h2>
+        <p>Команда <code>SELECT</code> используется для извлечения данных из таблиц.</p>
+        <pre><code>SELECT * FROM users;</code></pre>
+        <p>Этот запрос извлекает все строки и столбцы из таблицы <code>users</code>.</p>
+        <p>Вы также можете ограничить результаты, используя условие <code>WHERE</code>:</p>
+        <pre><code>SELECT username, mail FROM users WHERE mail_verify = 1;</code></pre>
+    </div>
+
+    <div class="section">
+        <h2>2. INSERT INTO — Добавление данных</h2>
+        <p>Команда <code>INSERT INTO</code> используется для добавления новых записей в таблицу.</p>
+        <pre><code>INSERT INTO users (username, mail) VALUES ('john_doe', 'john@example.com');</code></pre>
+        <p>Этот запрос добавит новую строку в таблицу <code>users</code> с указанными значениями для столбцов <code>username</code> и <code>mail</code>.</p>
+    </div>
+
+    <div class="section">
+        <h2>3. UPDATE — Обновление данных</h2>
+        <p>Команда <code>UPDATE</code> используется для изменения существующих записей в таблице.</p>
+        <pre><code>UPDATE users SET mail = 'new_email@example.com' WHERE id = 1;</code></pre>
+        <p>Этот запрос обновляет столбец <code>mail</code> в таблице <code>users</code>, где <code>id</code> равно 1.</p>
+    </div>
+
+    <div class="section">
+        <h2>4. DELETE — Удаление данных</h2>
+        <p>Команда <code>DELETE</code> используется для удаления данных из таблицы.</p>
+        <pre><code>DELETE FROM users WHERE id = 1;</code></pre>
+        <p>Этот запрос удаляет запись из таблицы <code>users</code>, где <code>id</code> равно 1.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. ALTER TABLE — Изменение структуры таблицы</h2>
+        <p>Команда <code>ALTER TABLE</code> используется для изменения структуры таблицы, например, добавления, изменения или удаления столбцов.</p>
+        <pre><code>ALTER TABLE users ADD COLUMN age INT;</code></pre>
+        <p>Этот запрос добавляет новый столбец <code>age</code> в таблицу <code>users</code>.</p>
+    </div>
+
+    <div class="section">
+        <h2>6. JOIN — Объединение таблиц</h2>
+        <p>Запрос <code>JOIN</code> используется для объединения данных из нескольких таблиц.</p>
+        <pre><code>SELECT users.username, orders.amount FROM users JOIN orders ON users.id = orders.user_id;</code></pre>
+        <p>Этот запрос объединяет таблицы <code>users</code> и <code>orders</code>, выбирая имена пользователей и их заказы.</p>
+    </div>
+
+    <div class="section">
+        <h2>7. GROUP BY — Группировка данных</h2>
+        <p>Запрос <code>GROUP BY</code> используется для группировки данных по одному или нескольким столбцам.</p>
+        <pre><code>SELECT mail_verify, COUNT(*) FROM users GROUP BY mail_verify;</code></pre>
+        <p>Этот запрос группирует пользователей по столбцу <code>mail_verify</code> и подсчитывает количество пользователей в каждой группе.</p>
+    </div>
+
+    <div class="section">
+        <h2>8. ORDER BY — Сортировка данных</h2>
+        <p>Запрос <code>ORDER BY</code> используется для сортировки данных по указанному столбцу.</p>
+        <pre><code>SELECT * FROM users ORDER BY username ASC;</code></pre>
+        <p>Этот запрос сортирует пользователей по столбцу <code>username</code> в порядке возрастания.</p>
+    </div>
+
+    <div class="section">
+        <h2>9. LIMIT — Ограничение количества строк</h2>
+        <p>Запрос <code>LIMIT</code> используется для ограничения количества возвращаемых строк.</p>
+        <pre><code>SELECT * FROM users LIMIT 5;</code></pre>
+        <p>Этот запрос вернет только первые 5 строк из таблицы <code>users</code>.</p>
+    </div>
+
+    <div class="section">
+        <h2>10. Основные операторы</h2>
+        <ul>
+            <li><code>AND</code> — логическое И (для комбинирования условий): <pre><code>SELECT * FROM users WHERE mail_verify = 1 AND perms = 1;</code></pre></li>
+            <li><code>OR</code> — логическое ИЛИ (для комбинирования условий): <pre><code>SELECT * FROM users WHERE mail_verify = 1 OR perms = 1;</code></pre></li>
+            <li><code>LIKE</code> — поиск по шаблону: <pre><code>SELECT * FROM users WHERE username LIKE 'john%';</code></pre></li>
+            <li><code>IN</code> — проверка на наличие значения в списке: <pre><code>SELECT * FROM users WHERE id IN (1, 2, 3);</code></pre></li>
+            <li><code>BETWEEN</code> — поиск значений в диапазоне: <pre><code>SELECT * FROM users WHERE id BETWEEN 1 AND 10;</code></pre></li>
+            <li><code>IS NULL</code> — проверка на NULL: <pre><code>SELECT * FROM users WHERE username IS NULL;</code></pre></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

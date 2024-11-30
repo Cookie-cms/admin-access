@@ -1,0 +1,112 @@
+/* Общие стили */
+#log-window {
+    width: 85%;
+    height: 400px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    background: #1e1e1e;
+    padding: 10px;
+    font-family: monospace;
+    color: #d4d4d4;
+    line-height: 1.4em;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.log-entry {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #444;
+}
+.log-entry .timestamp {
+    color: #569cd6;
+}
+.log-entry .info {
+    color: #9cdcfe;
+}
+.log-entry .error {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Новый блок для таблиц */
+#tables-list {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    font-size: 14px;
+    overflow-x: auto; /* Добавить горизонтальную прокрутку */
+}
+
+#tables-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#tables-list th, #tables-list td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#tables-list th {
+    background-color: #f0f0f0;
+}
+
+/* Блок для ввода SQL */
+#sql-command-block {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#command-input {
+    width: 80%;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+}
+
+#execute-button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#execute-button:hover {
+    background-color: #45a049;
+}
+
+#output-area {
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+/* Scroll button */
+#scroll-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#scroll-button:hover {
+    background-color: #45a049;
+}
