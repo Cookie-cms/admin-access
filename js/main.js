@@ -1,5 +1,3 @@
-// main.js
-
 import { fetchLogs } from './logs.js';
 import { fetchTableInfo, fetchTables } from './table.js';  // Correctly import the functions
 import { executeSQL } from './sql.js';
@@ -29,6 +27,14 @@ if (token) {
     fetchLogs();
 }
 
+const server = getCookie('server');
+if (server) {
+    document.getElementById('server-select').value = server;
+    if (server === 'custom') {
+        document.getElementById('custom-server-input').style.display = 'block';
+    }
+}
+
 document.getElementById('execute-button').addEventListener('click', function() {
     executeSQL();
 });
@@ -54,4 +60,5 @@ document.getElementById('server-select').addEventListener('change', function() {
     } else {
         customServerInput.style.display = 'none';
     }
+    document.cookie = `server=${selectedOption}; path=/;`;
 });

@@ -70,6 +70,28 @@
             const token = this.value;
             document.cookie = `token=${token}; path=/;`;
         });
+
+        document.getElementById('server-select').addEventListener('change', function() {
+            const server = this.value;
+            document.cookie = `server=${server}; path=/;`;
+            console.log("server cookie", server);
+        });
+
+        window.addEventListener('load', function() {
+            const getCookie = (name) => {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            };
+
+            const server = getCookie('server');
+            if (server) {
+                document.getElementById('server-select').value = server;
+                if (server === 'custom') {
+                    document.getElementById('custom-server-input').style.display = 'block';
+                }
+            }
+        });
     </script>
 </body>
 </html>
